@@ -42,4 +42,4 @@ jobs:
           git add --force build/web
           git commit -m "Release web"
       - name: Push to web
-          git push -u origin gh-pages
+        run: git push -u origin gh-pages
