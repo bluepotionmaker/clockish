@@ -33,7 +33,7 @@ jobs:
           flutter pub get
           flutter format --set-exit-if-changed .
           flutter analyze .
-          flutter build web --release
+          flutter build web --release --web-renderer auto
           # Delete flutter's default href
           sed -i '/base href/d' build/web/index.html
       - name: Commit Built Files
