@@ -5,7 +5,10 @@ class ClockishApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ClockishMain(),
+      routes: {
+        "/clockish": (context) => ClockishMain(),
+      },
+      initialRoute: "/clockish",
     );
   }
 }

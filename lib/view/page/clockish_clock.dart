@@ -14,10 +14,14 @@ class ClockishClock extends StatelessWidget {
         builder: (context, snapshot) {
           final _clockishHand =
               HandString(snapshot.hasData ? snapshot.data : "");
-          return GridView.count(
-            crossAxisCount: sClockishTime.length ~/ 3,
+          return Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            runAlignment: WrapAlignment.center,
             children: sClockishTime.characters
-                .map((e) => Center(
+                .map((e) => SizedBox(
+                      width: 50,
+                      height: 50,
                       child: HandText(
                         hand: e,
                         turn: shouldTurnOnHand(_clockishHand, e),
