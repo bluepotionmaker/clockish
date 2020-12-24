@@ -21,9 +21,14 @@ class HandString {
 }
 
 bool shouldTurnOnHand(HandString s, String target) {
-  if (s.value.isNotEmpty && s.value[0] == target) {
-    s.value = s.value.replaceFirst(target, "");
-    return true;
+  if (s.value.isNotEmpty) {
+    if (s.value[0] == "영") {
+      s.value = s.value.substring(1);
+    }
+    if (s.value[0] == target) {
+      s.value = s.value.substring(1);
+      return true;
+    }
   }
   return false;
 }
