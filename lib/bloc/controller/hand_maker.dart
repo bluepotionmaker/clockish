@@ -22,7 +22,7 @@ class HandString {
 
 bool shouldTurnOnHand(HandString s, String target) {
   if (s.value.isNotEmpty) {
-    if (s.value[0] == "영") {
+    if (s.value[0] == "영" || (!s.value.contains("시")  && s.value[0] == "일")) {
       s.value = s.value.substring(1);
     }
     if (s.value[0] == target) {

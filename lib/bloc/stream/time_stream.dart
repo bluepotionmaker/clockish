@@ -2,9 +2,8 @@ import 'dart:async';
 import 'package:time/time.dart';
 import 'package:rxdart/rxdart.dart';
 
-final _timeStream =
-    Stream.periodic(Duration(milliseconds: 1000), (_) => DateTime.now())
-        .startWith(DateTime.now());
+final _timeStream = Stream.periodic(Duration(minutes: 1), (_) => DateTime.now())
+    .startWith(DateTime.now());
 
 final clockishTimeStream = _timeStream.map<DateTime>((now) {
   // 8 9 0 1 2 => 0, 3 4 5 6 7 => 5

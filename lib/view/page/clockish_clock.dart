@@ -13,6 +13,7 @@ class ClockishClock extends StatelessWidget {
         builder: (context, snapshot) {
           final _clockishHand =
               HandString(snapshot.hasData ? snapshot.data : "");
+          print(_clockishHand.value);
           return Wrap(
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
