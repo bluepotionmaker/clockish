@@ -44,6 +44,6 @@ jobs:
     - name: Push to web
       uses: ad-m/github-push-action@master
       with:
-        github_token: 87ae22dcee08e2059933f7de6c8f78a7158330ed
+        github_token: ${{ secrets.COMMIT_SECRET }}
         branch: gh-pages
         force: true
