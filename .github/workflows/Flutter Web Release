@@ -1,0 +1,49 @@
+name: Flutter Web CI
+
+# This workflow is triggered on pushes to the repository.
+
+on:
+  push:
+    branches:
+    - main
+    
+# on: push    # Default will running for every branch.
+    
+jobs:
+  build:
+    name: Build and release flutter web
+    env:
+      my_secret: $
+    # This job will run on ubuntu virtual machine
+    runs-on: ubuntu-latest
+    steps:
+    
+    # Setup Java environment in order to build the Android app.
+    - uses: actions/checkout@v1
+    
+    # Setup the flutter environment.
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'dev' # 'dev', 'alpha', default to: 'stable'
+        # flutter-version: '1.12.x' # you can also specify exact version of flutter
+    
+    - name: Build web
+    # Enable flutter web 
+      run: |
+        flutter config --enable-web
+        flutter pub get
+        flutter format --set-exit-if-changed .
+        flutter analyze .
+        flutter build web --release
+    - name: Commit Built Files
+      run: |
+        git config --local user.email "bluepotion.maker@gmail.com"
+        git config --local user.name "bluepotionmaker"
+        git add --force build/web
+        git commit -m "Release web"
+    - name: Push to web
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.COMMIT_SECRET }}
+        branch: gh-pages
+        force: true
