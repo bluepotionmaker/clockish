@@ -42,4 +42,6 @@ jobs:
           git add --force build/web
           git commit -m "Release web"
       - name: Push to web
-        run: git push -u origin gh-pages
+        run: |
+          git remote add gh-token "https://${{ secrets.COMMIT_SECRET }}@github.com/bluepotionmaker/clockish.git"
+          git push --force gh-token gh-pages
