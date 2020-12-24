@@ -1,14 +1,7 @@
-import 'package:clockish/bloc/time_stream.dart';
-import 'package:clockish/const/clockish_time.dart';
-import 'package:rxdart/rxdart.dart';
-import 'package:time/time.dart';
-import 'package:characters/characters.dart';
-
 const _minuteToHand = "영일이삼사오";
 final _hourToHand =
     ["열두", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열", "열한"].asMap();
-
-final clockishHandStream = clockishTimeStream.map<String>((now) {
+String dateTimeToHand(DateTime now) {
   var clockishHand = "대충";
   clockishHand += _hourToHand[now.hour] + "시";
   if (now.minute >= 10) {
@@ -20,4 +13,17 @@ final clockishHandStream = clockishTimeStream.map<String>((now) {
     clockishHand += "분";
   }
   return clockishHand + "쯤";
-});
+}
+
+class HandString {
+  HandString(this.value);
+  String value;
+}
+
+bool shouldTurnOnHand(HandString s, String target) {
+  if (s.value.isNotEmpty && s.value[0] == target) {
+    s.value = s.value.replaceFirst(target, "");
+    return true;
+  }
+  return false;
+}
