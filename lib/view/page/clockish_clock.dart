@@ -1,6 +1,5 @@
 import 'package:clockish/bloc/controller/hand_maker.dart';
 import 'package:clockish/bloc/stream/hand_stream.dart';
-import 'package:clockish/bloc/stream/time_stream.dart';
 import 'package:clockish/const/clockish_time.dart';
 import 'package:clockish/view/widget/hand_text.dart';
 import 'package:flutter/material.dart';
